@@ -11,6 +11,7 @@ func CustomUnmarshal(Struct any, filename string) {
 	if err != nil {
 		panic(err)
 	}
+
 	byteValue, _ := ioutil.ReadAll(file)
 	if err = file.Close(); err != nil {
 		panic(err)
