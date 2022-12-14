@@ -6,18 +6,19 @@ import (
 	"os"
 )
 
-func CustomUnmarshal(Struct any, filename string) {
+func CustomUnmarshal(Struct any, filename string) error {
 	file, err := os.Open(filename)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	byteValue, _ := ioutil.ReadAll(file)
 	if err = file.Close(); err != nil {
-		panic(err)
+		return err
 	}
 	S := Struct
 	if err := json.Unmarshal(byteValue, &S); err != nil {
-		panic(err)
+		return err
 	}
+	return nil
 }
